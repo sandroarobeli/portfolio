@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Montserrat", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1 {
+    @apply text-7xl;
+  }
+}
+
+@layer components {
+  .test-button {
+    @apply bg-primary text-black py-4 px-6 rounded hover:bg-primary-hover transition ease-in delay-0 duration-300 active:bg-primary-active active:scale-95;
+  }
+}
+
+/* .font-montserrat {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+} */
