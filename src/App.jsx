@@ -1,24 +1,46 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
-// IMPORTANT NOTES: FAVICON, SEO, LIGHTHOUSE etc...
+import HomeIcon from "./icons/Home";
+import UserIcon from "./icons/User";
+import BriefcaseIcon from "./icons/Briefcase";
+import NewspaperIcon from "./icons/Newspaper";
+import EnvelopeIcon from "./icons/Envelope";
+// IMPORTANT NOTES: FAVICON, SEO, ACCESSIBILITY, LIGHTHOUSE etc...
+// ALSO: BRANCH OFF TO A HIDDEN COMPONENT AND EITHER LOG OR DISPLAY A VISITOR COUNTER!
 // NEXT: READ ON FONT SIZING AND KEEP FILLING BASIC CONFIG SETTINGS AS THIS GUY GOES ON...
+// TIMESTAMP: 46:00
+// IN CASE I NEED TO CHANGE BUTTONS INTO DIVS, REFERENCE STARTS AT 22:00. (POINTER EVENTS ETC)
 
-// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-// if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-//   document.documentElement.classList.add('dark')
-// } else {
-//   document.documentElement.classList.remove('dark')
-// }
-
-// Whenever the user explicitly chooses light mode
-// localStorage.theme = 'light'
-
-// Whenever the user explicitly chooses dark mode
-// localStorage.theme = 'dark'
-
+// ID ATTRIBUTES MAY NOT BE NECESSARY AFTER ALL. REMOVE THEM IF SO...
 const App = () => {
+  // TEMP START
+  const [active, setActive] = useState({
+    home: true,
+    about: false,
+    portfolio: false,
+    articles: false,
+    contact: false,
+  });
+
+  console.log("active 1: ", active); // test
+
+  function switcher(section) {
+    const copy = { ...active };
+    Object.keys(copy).forEach((key) => {
+      if (key === section) {
+        copy[key] = true;
+      } else {
+        copy[key] = false;
+      }
+    });
+    setActive(copy);
+    console.log("active 2:", active); // test
+  }
+
+  // TEMP END
+
   useEffect(() => {
-    console.log("local storage theme 1: " + localStorage.theme);
+    // console.log("local storage theme 1: " + localStorage.theme);
     if (
       localStorage.theme === "dark" ||
       window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -36,50 +58,137 @@ const App = () => {
     } else {
       document.documentElement.classList.remove("dark");
       localStorage.theme = "light";
-    } // RESTORE IF NEEDED
-    console.log("local storage theme 2: " + localStorage.theme);
-
-    // document.documentElement.classList.toggle("dark");
+    }
+    // console.log("local storage theme 2: " + localStorage.theme);
   };
 
   return (
-    <div className="relative">
-      <div className="absolute top-0 right-0 left-0 bottom-0 bg-repeat w-screen h-screen bg-paper bg-primary dark:bg-black">
+    <div className="main-content">
+      <header
+        id="home"
+        className={`section section-1 header ${active.home ? "active" : ""}`}
+      >
+        HOME TEST
+      </header>
+      <main className="">
+        <section
+          id="about"
+          className={`section section-2 about ${active.about ? "active" : ""}`}
+        >
+          ABOUT TEST
+        </section>
+        <section
+          id="portfolio"
+          className={`section section-3 portfolio ${
+            active.portfolio ? "active" : ""
+          }`}
+        >
+          SECTION TEST
+        </section>
+        <section
+          id="articles"
+          className={`section section-4 articles ${
+            active.articles ? "active" : ""
+          }`}
+        >
+          ARTICLES TEST
+        </section>
+        <section
+          id="contact"
+          className={`section section-5 contact ${
+            active.contact ? "active" : ""
+          }`}
+        >
+          CONTACT TEST
+        </section>
+      </main>
+      <div className="controls">
+        <button
+          data-id="home"
+          className={`control control-1 ${active.home ? "active-btn" : ""}`}
+          onClick={() => switcher("home")}
+        >
+          <HomeIcon
+            className={`${
+              active.home
+                ? "text-primary dark:text-black"
+                : "text-black dark:text-primary"
+            }`}
+          />
+        </button>
+        <button
+          data-id="about"
+          className={`control control-2 ${active.about ? "active-btn" : ""}`}
+          onClick={() => switcher("about")}
+        >
+          <UserIcon
+            className={`${
+              active.about
+                ? "text-primary dark:text-black"
+                : "text-black dark:text-primary"
+            }`}
+          />
+        </button>
+        <button
+          data-id="portfolio"
+          className={`control control-3 ${
+            active.portfolio ? "active-btn" : ""
+          }`}
+          onClick={() => switcher("portfolio")}
+        >
+          <BriefcaseIcon
+            className={`${
+              active.portfolio
+                ? "text-primary dark:text-black"
+                : "text-black dark:text-primary"
+            }`}
+          />
+        </button>
+        <button
+          data-id="articles"
+          className={`control control-4 ${active.articles ? "active-btn" : ""}`}
+          onClick={() => switcher("articles")}
+        >
+          <NewspaperIcon
+            className={`${
+              active.articles
+                ? "text-primary dark:text-black"
+                : "text-black dark:text-primary"
+            }`}
+          />
+        </button>
+        <button
+          data-id="contact"
+          className={`control control-5 ${active.contact ? "active-btn" : ""}`}
+          onClick={() => switcher("contact")}
+        >
+          <EnvelopeIcon
+            className={`${
+              active.contact
+                ? "text-primary dark:text-black"
+                : "text-black dark:text-primary"
+            }`}
+          />
+        </button>
         <button
           onClick={changeMode}
           className="px-8 py-4 ml-48 mt-48 rounded-md border-x border-y border-black text-black bg-transparent dark:bg-transparent dark:text-[#F5F5DC] dark:border-[#F5F5DC]"
         >
           MODE
         </button>
-        <h1 className="dark:text-[#F5F5DC]">
-          Alex Arobelidze default font Montserrat
-        </h1>
-        <h1 className="dark:text-primary">
-          Alex Arobelidze default font Montserrat
-        </h1>
-        <h1 className="dark:text-primary-hover">
-          Alex Arobelidze default font Montserrat
-        </h1>
-        <h1 className="dark:text-primary-active">
-          Alex Arobelidze default font Montserrat
-        </h1>
       </div>
     </div>
   );
 };
-// className="absolute top-0 right-0 left-0 bottom-0 bg-repeat w-screen h-screen bg-paper bg-[#F5F5DC] dark:bg-black"
-// bg=[#E0E2DC] 3.
-// bg-[#F5F5DC] 1.
-// bg-[#FCF5E5] 2.
-export default App;
-/*
-<div className="absolute top-0 bottom-0 left-0 right-0 bg-repeat mix-blend-multiply pointer-events-none">
-        <button
-          onClick={changeMode}
-          className="px-6 py-4 ml-48 mt-48 bg-black text-white dark:bg-white dark:text-black"
-        >
-          Mode
-        </button>
-      </div>
 
+export default App;
+
+/*
+
+ <button
+          onClick={changeMode}
+          className="px-8 py-4 ml-48 mt-48 rounded-md border-x border-y border-black text-black bg-transparent dark:bg-transparent dark:text-[#F5F5DC] dark:border-[#F5F5DC]"
+        >
+          MODE
+        </button>
 */
