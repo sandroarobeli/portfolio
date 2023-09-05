@@ -5,13 +5,15 @@ import UserIcon from "./icons/User";
 import BriefcaseIcon from "./icons/Briefcase";
 import NewspaperIcon from "./icons/Newspaper";
 import EnvelopeIcon from "./icons/Envelope";
+import Home from "./components/Home";
 // IMPORTANT NOTES: FAVICON, SEO, ACCESSIBILITY, LIGHTHOUSE etc...
 // ALSO: BRANCH OFF TO A HIDDEN COMPONENT AND EITHER LOG OR DISPLAY A VISITOR COUNTER!
 // NEXT: READ ON FONT SIZING AND KEEP FILLING BASIC CONFIG SETTINGS AS THIS GUY GOES ON...
-// TIMESTAMP: 46:00
+// TIMESTAMP: 1:05
 // IN CASE I NEED TO CHANGE BUTTONS INTO DIVS, REFERENCE STARTS AT 22:00. (POINTER EVENTS ETC)
 
-// ID ATTRIBUTES MAY NOT BE NECESSARY AFTER ALL. REMOVE THEM IF SO...
+// HEADER START 49:20
+// AT SOME POINT REFACTOR SECTIONS INTO SEPARATE COMPONENTS!!!
 const App = () => {
   // TEMP START
   const [active, setActive] = useState({
@@ -64,47 +66,47 @@ const App = () => {
 
   return (
     <div className="main-content">
-      <header
-        id="home"
-        className={`section section-1 header ${active.home ? "active" : ""}`}
-      >
-        HOME TEST
+      <header className={`section section-1 ${active.home ? "active" : ""}`}>
+        <Home />
       </header>
       <main className="">
         <section
-          id="about"
           className={`section section-2 about ${active.about ? "active" : ""}`}
         >
-          ABOUT TEST
+          ABOUT SECTION
         </section>
         <section
-          id="portfolio"
           className={`section section-3 portfolio ${
             active.portfolio ? "active" : ""
           }`}
         >
-          SECTION TEST
+          PORTFOLIO SECTION
         </section>
         <section
-          id="articles"
           className={`section section-4 articles ${
             active.articles ? "active" : ""
           }`}
         >
-          ARTICLES TEST
+          ARTICLES SECTION
         </section>
         <section
-          id="contact"
           className={`section section-5 contact ${
             active.contact ? "active" : ""
           }`}
         >
-          CONTACT TEST
+          CONTACT SECTION
         </section>
       </main>
       <div className="controls">
         <button
-          data-id="home"
+          aria-label="light-dark mode switch"
+          onClick={changeMode}
+          className="px-4 py-2 rounded-md border-x border-y border-black text-black bg-transparent dark:bg-transparent dark:text-[#F5F5DC] dark:border-[#F5F5DC]"
+        >
+          MODE
+        </button>
+        <button
+          aria-label="Home page"
           className={`control control-1 ${active.home ? "active-btn" : ""}`}
           onClick={() => switcher("home")}
         >
@@ -117,7 +119,7 @@ const App = () => {
           />
         </button>
         <button
-          data-id="about"
+          aria-label="About page"
           className={`control control-2 ${active.about ? "active-btn" : ""}`}
           onClick={() => switcher("about")}
         >
@@ -130,7 +132,7 @@ const App = () => {
           />
         </button>
         <button
-          data-id="portfolio"
+          aria-label="Portfolio page"
           className={`control control-3 ${
             active.portfolio ? "active-btn" : ""
           }`}
@@ -145,7 +147,7 @@ const App = () => {
           />
         </button>
         <button
-          data-id="articles"
+          aria-label="Articles page"
           className={`control control-4 ${active.articles ? "active-btn" : ""}`}
           onClick={() => switcher("articles")}
         >
@@ -158,7 +160,7 @@ const App = () => {
           />
         </button>
         <button
-          data-id="contact"
+          aria-label="Contact page"
           className={`control control-5 ${active.contact ? "active-btn" : ""}`}
           onClick={() => switcher("contact")}
         >
@@ -169,12 +171,6 @@ const App = () => {
                 : "text-black dark:text-primary"
             }`}
           />
-        </button>
-        <button
-          onClick={changeMode}
-          className="px-8 py-4 ml-48 mt-48 rounded-md border-x border-y border-black text-black bg-transparent dark:bg-transparent dark:text-[#F5F5DC] dark:border-[#F5F5DC]"
-        >
-          MODE
         </button>
       </div>
     </div>

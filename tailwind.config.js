@@ -22,6 +22,8 @@ module.exports = {
       // animation class
       animation: {
         scale: "scale 1s ease-in-out",
+        slide: "slide 1.5s linear",
+        fade: "fade 2s linear",
       },
       // actual animation
       keyframes: () => ({
@@ -29,7 +31,16 @@ module.exports = {
           "0%": { transform: "translateY(-100%)", scaleY: 0 },
           "100%": { transform: "translateY(0)", scaleY: 1 },
         },
+        slide: {
+          "0%": { opacity: 0, marginLeft: "-250px" },
+          "100%": { opacity: 1, marginLeft: 0 },
+        },
+        fade: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
       }),
+
       // fontFamily: {
       //   montserrat: ["var(--font-montserrat)", "sans-serif"],
       // },

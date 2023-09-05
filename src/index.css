@@ -48,6 +48,10 @@
     @apply hidden translate-y-0 scale-100;
   }
 
+  .section-1.active {
+    @apply animate-none;
+  }
+
   .active {
     @apply block animate-scale;
   }
@@ -65,6 +69,31 @@
     @apply bg-paper bg-black dark:bg-primary transition-all ease-in-out delay-0 duration-300;
   }
 
+  /* Header Content */ /* TEST STATUS FOR NOW */
+  .header-content {
+    @apply flex flex-col justify-center h-full px-[3%];
+  }
+
+  .top-header {
+    @apply mb-8;
+  }
+
+  .bottom-header {
+    @apply text-xl animate-fade dark:text-primary;
+  }
+
+  .logo {
+    @apply text-8xl py-0 px-4 block float-left animate-slide;
+  }
+  /* font-serif */
+  .firstName {
+    @apply text-primary bg-paper bg-black dark:text-black dark:bg-primary;
+  }
+
+  .lastName {
+    @apply text-black bg-inherit dark:text-primary;
+  }
+  /* INDEPENDENT COMPONENTS - WHATEVER THE FUCK THIS DUMB SHIT MEANS BY IT */
   .test-button {
     @apply bg-primary text-black py-4 px-6 rounded hover:bg-primary-hover transition-all ease-in-out delay-0 duration-300 active:bg-primary-active active:scale-95;
   }
