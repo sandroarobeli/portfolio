@@ -1,48 +1,32 @@
 import { useState, useEffect } from "react";
 
-import HomeIcon from "./icons/Home";
-import UserIcon from "./icons/User";
-import BriefcaseIcon from "./icons/Briefcase";
-import NewspaperIcon from "./icons/Newspaper";
-import EnvelopeIcon from "./icons/Envelope";
-import Home from "./components/Home";
+import HtmlIcon from "./icons/Html";
+import CssIcon from "./icons/Css";
+import JsIcon from "./icons/Js";
+import ReactIcon from "./icons/React";
+import ReduxIcon from "./icons/Redux";
+import NodeIcon from "./icons/Node";
+import TailwindIcon from "./icons/Tailwind";
+import MuiIcon from "./icons/Mui";
+import CsharpIcon from "./icons/Csharp";
+import MongoIcon from "./icons/Mongo";
+import SqlIcon from "./icons/Sql";
+import GitIcon from "./icons/Git";
+import ThemeIcon from "./icons/Theme";
+import ControlPanel from "./components/ControlPanel";
+
 // IMPORTANT NOTES: FAVICON, SEO, ACCESSIBILITY, LIGHTHOUSE etc...
 // ALSO: BRANCH OFF TO A HIDDEN COMPONENT AND EITHER LOG OR DISPLAY A VISITOR COUNTER!
-// NEXT: READ ON FONT SIZING AND KEEP FILLING BASIC CONFIG SETTINGS AS THIS GUY GOES ON...
-// TIMESTAMP: 1:05
-// IN CASE I NEED TO CHANGE BUTTONS INTO DIVS, REFERENCE STARTS AT 22:00. (POINTER EVENTS ETC)
+// DO THE LAZY LOADING AT THE VERY END AFTER EXTRACTING CUSTOM COMPONENTS
 
-// HEADER START 49:20
-// AT SOME POINT REFACTOR SECTIONS INTO SEPARATE COMPONENTS!!!
+// ONCE ALL PAGES ARE COMPLETE, TRY AND FIND WHERE TO PLACE MIN-H-SCREEN SO IT STAYS COMPACT!
+
+// TEMPLATE FOR FINAL VIEW: <section><CustomElement /></section>
+
 const App = () => {
-  // TEMP START
-  const [active, setActive] = useState({
-    home: true,
-    about: false,
-    portfolio: false,
-    articles: false,
-    contact: false,
-  });
-
-  console.log("active 1: ", active); // test
-
-  function switcher(section) {
-    const copy = { ...active };
-    Object.keys(copy).forEach((key) => {
-      if (key === section) {
-        copy[key] = true;
-      } else {
-        copy[key] = false;
-      }
-    });
-    setActive(copy);
-    console.log("active 2:", active); // test
-  }
-
-  // TEMP END
+  const [activePage, setActivePage] = useState("home");
 
   useEffect(() => {
-    // console.log("local storage theme 1: " + localStorage.theme);
     if (
       localStorage.theme === "dark" ||
       window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -53,7 +37,7 @@ const App = () => {
     }
   }, []);
 
-  const changeMode = () => {
+  const toggleMode = () => {
     if (!localStorage.theme || localStorage.theme === "light") {
       document.documentElement.classList.add("dark");
       localStorage.theme = "dark";
@@ -61,130 +45,111 @@ const App = () => {
       document.documentElement.classList.remove("dark");
       localStorage.theme = "light";
     }
-    // console.log("local storage theme 2: " + localStorage.theme);
   };
 
   return (
-    <div className="main-content">
-      <header className={`section section-1 ${active.home ? "active" : ""}`}>
-        <Home />
-      </header>
-      <main className="">
-        <section
-          className={`section section-2 about ${active.about ? "active" : ""}`}
+    <div className="flex flex-col justify-between">
+      <header>
+        <button
+          aria-label="Light-dark theme switch"
+          className="theme-button"
+          onClick={toggleMode}
         >
-          ABOUT SECTION
-        </section>
+          <ThemeIcon className="theme-icon" />
+        </button>
+      </header>
+      <main className="container min-h-screen mx-auto mb-20 sm:mb-4 px-2 sm:px-4">
         <section
-          className={`section section-3 portfolio ${
-            active.portfolio ? "active" : ""
-          }`}
+          className={`${activePage === "home" ? "opacity-100" : "hidden"}`}
+        >
+          <div className="mb-10">
+            <h1 className="first-name">Alex</h1>
+            <h1 className="last-name">Arobelidze</h1>
+          </div>
+          <div className="page-content">
+            <p className="mb-3">
+              Dedicated to developing well functioning web applications.
+            </p>
+            <p>
+              Passionate about solving business problems through human-centered
+              approach.
+            </p>
+          </div>
+        </section>
+
+        <section
+          className={`${activePage === "about" ? "opacity-100" : "hidden"}`}
+        >
+          <div className="mb-10">
+            <h1 className="page-title">About</h1>
+          </div>
+          <div className="mb-10 page-content">
+            <p className="mb-3">
+              I am a web developer based in the United States. I focus on
+              listening to you, the client, transforming your business needs
+              into seamlessly functioning applications to help you grow and
+              prosper.
+            </p>
+            <p className="mb-3">
+              I develop user interface for customer interaction as well as the
+              server code that works behind the curtain to make such interaction
+              possible.
+            </p>
+            <p>
+              I enjoy meeting new people and building long lasting, successful
+              relationships.
+            </p>
+            <p>Below are some of the tools I use in my work.</p>
+          </div>
+          <div className="icons-container">
+            <HtmlIcon className="skill-icon" />
+            <CssIcon className="skill-icon" />
+            <JsIcon className="skill-icon" />
+            <ReactIcon className="skill-icon" />
+            <ReduxIcon className="skill-icon" />
+            <NodeIcon className="skill-icon" />
+            <CsharpIcon className="skill-icon" />
+            <TailwindIcon className="skill-icon" />
+            <MuiIcon className="skill-icon" />
+            <MongoIcon className="skill-icon" />
+            <SqlIcon className="skill-icon" />
+            <GitIcon className="skill-icon" />
+          </div>
+        </section>
+
+        <section
+          className={`${activePage === "portfolio" ? "opacity-100" : "hidden"}`}
+          style={{ border: "1px solid red" }}
         >
           PORTFOLIO SECTION
         </section>
         <section
-          className={`section section-4 articles ${
-            active.articles ? "active" : ""
-          }`}
+          className={`${activePage === "articles" ? "opacity-100" : "hidden"}`}
+          style={{ border: "1px solid red" }}
         >
           ARTICLES SECTION
         </section>
         <section
-          className={`section section-5 contact ${
-            active.contact ? "active" : ""
-          }`}
+          className={`${activePage === "contact" ? "opacity-100" : "hidden"}`}
+          style={{ border: "1px solid red" }}
         >
           CONTACT SECTION
         </section>
+        <ControlPanel
+          className="control-panel-laptop"
+          activePage={activePage}
+          setActivePage={setActivePage}
+        />
       </main>
-      <div className="controls">
-        <button
-          aria-label="light-dark mode switch"
-          onClick={changeMode}
-          className="px-4 py-2 rounded-md border-x border-y border-black text-black bg-transparent dark:bg-transparent dark:text-[#F5F5DC] dark:border-[#F5F5DC]"
-        >
-          MODE
-        </button>
-        <button
-          aria-label="Home page"
-          className={`control control-1 ${active.home ? "active-btn" : ""}`}
-          onClick={() => switcher("home")}
-        >
-          <HomeIcon
-            className={`${
-              active.home
-                ? "text-primary dark:text-black"
-                : "text-black dark:text-primary"
-            }`}
-          />
-        </button>
-        <button
-          aria-label="About page"
-          className={`control control-2 ${active.about ? "active-btn" : ""}`}
-          onClick={() => switcher("about")}
-        >
-          <UserIcon
-            className={`${
-              active.about
-                ? "text-primary dark:text-black"
-                : "text-black dark:text-primary"
-            }`}
-          />
-        </button>
-        <button
-          aria-label="Portfolio page"
-          className={`control control-3 ${
-            active.portfolio ? "active-btn" : ""
-          }`}
-          onClick={() => switcher("portfolio")}
-        >
-          <BriefcaseIcon
-            className={`${
-              active.portfolio
-                ? "text-primary dark:text-black"
-                : "text-black dark:text-primary"
-            }`}
-          />
-        </button>
-        <button
-          aria-label="Articles page"
-          className={`control control-4 ${active.articles ? "active-btn" : ""}`}
-          onClick={() => switcher("articles")}
-        >
-          <NewspaperIcon
-            className={`${
-              active.articles
-                ? "text-primary dark:text-black"
-                : "text-black dark:text-primary"
-            }`}
-          />
-        </button>
-        <button
-          aria-label="Contact page"
-          className={`control control-5 ${active.contact ? "active-btn" : ""}`}
-          onClick={() => switcher("contact")}
-        >
-          <EnvelopeIcon
-            className={`${
-              active.contact
-                ? "text-primary dark:text-black"
-                : "text-black dark:text-primary"
-            }`}
-          />
-        </button>
-      </div>
+      <footer>
+        <ControlPanel
+          className="control-panel-mobile"
+          activePage={activePage}
+          setActivePage={setActivePage}
+        />
+      </footer>
     </div>
   );
 };
 
 export default App;
-
-/*
-
- <button
-          onClick={changeMode}
-          className="px-8 py-4 ml-48 mt-48 rounded-md border-x border-y border-black text-black bg-transparent dark:bg-transparent dark:text-[#F5F5DC] dark:border-[#F5F5DC]"
-        >
-          MODE
-        </button>
-*/

@@ -21,29 +21,41 @@ module.exports = {
       },
       // animation class
       animation: {
-        scale: "scale 1s ease-in-out",
+        scale: "scale 0.3s ease-in",
         slide: "slide 1.5s linear",
-        fade: "fade 2s linear",
+        fadeIn: "fadeIn 2.1s ease-in",
+        fadeOut: "fadeOut 1.5s ease-out",
+        slideSlow: "slideSlow 1.15s ease-in",
+        slideFast: "slideFast 1.15s ease-in",
       },
       // actual animation
       keyframes: () => ({
         scale: {
-          "0%": { transform: "translateY(-100%)", scaleY: 0 },
-          "100%": { transform: "translateY(0)", scaleY: 1 },
+          "0%": { transform: "translateX(-100%)", scaleX: 0 },
+          "100%": { transform: "translateX(0)", scaleX: 1 },
         },
-        slide: {
+        slideSlow: {
           "0%": { opacity: 0, marginLeft: "-250px" },
           "100%": { opacity: 1, marginLeft: 0 },
         },
-        fade: {
+        slideFast: {
+          "0%": { opacity: 0, marginLeft: "-450px" },
+          "100%": { opacity: 1, marginLeft: 0 },
+        },
+        slide: {
+          "0%": { opacity: 0, marginLeft: "-450px" },
+          "100%": { opacity: 1, marginLeft: 0 },
+        },
+        fadeIn: {
           "0%": { opacity: 0 },
+          "50%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        fadeOut: {
+          "0%": { opacity: 0.4 },
           "100%": { opacity: 1 },
         },
       }),
-
-      // fontFamily: {
-      //   montserrat: ["var(--font-montserrat)", "sans-serif"],
-      // },
     },
   },
   plugins: [],
