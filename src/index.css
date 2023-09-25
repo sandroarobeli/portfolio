@@ -10,6 +10,14 @@
     @apply m-0 p-0 box-border bg-paper overflow-auto list-none transition-all ease-in-out delay-0 duration-300 bg-primary dark:bg-black;
   }
 
+  a {
+    @apply inline-block no-underline text-blue-700 hover:text-blue-900;
+  }
+
+  li a {
+    @apply leading-relaxed mb-6 text-inherit dark:hover:text-blue-700 transition-all ease-in-out duration-300;
+  }
+
   header {
     @apply p-4 relative flex justify-end items-center;
   }
@@ -20,10 +28,6 @@
   /* pt-16  min-h-screen */
   section {
     @apply flex flex-col w-full sm:w-[91%] ml-0 mx-auto animate-fadeOut;
-  }
-
-  a {
-    @apply inline-block no-underline text-blue-700 hover:text-blue-900;
   }
 }
 
@@ -62,6 +66,14 @@
     @apply w-16 h-16 p-2 sm:w-24 sm:h-24 sm:p-3 bg-paper bg-primary rounded-lg shadow-dark dark:shadow-light;
   }
 
+  .contact-icon {
+    @apply w-6 h-6 mr-1;
+  }
+
+  .article-logo {
+    @apply text-4xl sm:text-5xl font-semibold font-serif;
+  }
+
   /* Page Titles & Content */
   .first-name {
     @apply text-5xl sm:text-8xl py-0 px-2 sm:px-4 float-left animate-slideSlow text-primary bg-paper bg-black dark:text-black dark:bg-primary;
@@ -80,14 +92,30 @@
   }
 
   .icons-container {
-    @apply grid grid-cols-3 gap-6 justify-items-center sm:grid-cols-4 md:grid-cols-6 mb-8 animate-fadeIn;
+    @apply grid grid-cols-3 gap-6 justify-items-center sm:grid-cols-4 md:grid-cols-6 animate-fadeIn;
   }
 
   .portfolio-container {
-    @apply mb-8 grid grid-cols-1 gap-10 sm:grid-cols-3 justify-items-center sm:justify-items-start animate-fadeIn;
+    @apply grid grid-cols-1 gap-10 sm:grid-cols-3 justify-items-center sm:justify-items-start animate-fadeIn;
   }
 
   .portfolio-item {
     @apply flex flex-col items-center justify-between bg-paper bg-primary rounded-lg shadow-dark dark:shadow-light;
+  }
+
+  .contact-container {
+    @apply flex flex-col justify-center items-start sm:items-center sm:flex-row sm:justify-between;
+  }
+
+  .contact-container-info {
+    @apply flex flex-col justify-between items-start w-full sm:w-2/5;
+  }
+
+  .contact-container-form {
+    @apply;
+  }
+
+  .contact-entry {
+    @apply mb-2 flex justify-between items-center;
   }
 }

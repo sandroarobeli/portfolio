@@ -1,22 +1,15 @@
 import { useState, useEffect } from "react";
 
-import HtmlIcon from "./icons/Html";
-import CssIcon from "./icons/Css";
-import JsIcon from "./icons/Js";
-import ReactIcon from "./icons/React";
-import ReduxIcon from "./icons/Redux";
-import NodeIcon from "./icons/Node";
-import TailwindIcon from "./icons/Tailwind";
-import MuiIcon from "./icons/Mui";
-import CsharpIcon from "./icons/Csharp";
-import MongoIcon from "./icons/Mongo";
-import SqlIcon from "./icons/Sql";
-import GitIcon from "./icons/Git";
-import ThemeIcon from "./icons/Theme";
 import ControlPanel from "./components/ControlPanel";
-import eCommerce from "./img/e-commerce.png";
-import maxCarriers from "./img/max-carriers.jpg";
-import jobTracker from "./img/job-tracker.png";
+import About from "./components/About";
+import Articles from "./components/Articles";
+import Portfolio from "./components/Portfolio";
+import ThemeIcon from "./icons/Theme";
+import LocationIcon from "./icons/Location";
+import EnvelopeIcon from "./icons/Envelope";
+import PhoneIcon from "./icons/Phone";
+import LinkedInIcon from "./icons/LinkedIn";
+// import LocationIcon2 from "./icons/Location21";
 
 // IMPORTANT NOTES: FAVICON, SEO, ACCESSIBILITY, LIGHTHOUSE etc...
 // ALSO: BRANCH OFF TO A HIDDEN COMPONENT AND EITHER LOG OR DISPLAY A VISITOR COUNTER!
@@ -28,6 +21,8 @@ import jobTracker from "./img/job-tracker.png";
 // DO THE LAZY LOADING AT THE VERY END AFTER EXTRACTING CUSTOM COMPONENTS
 
 // MAYBE USE MY PHOTO FOR FAVICON?
+
+// BETWEEN SUB-SECTIONS: MB-16, AFTER SECTION MB-10 (OR MAYBE 16) FOR NOW...
 
 const App = () => {
   const [activePage, setActivePage] = useState("home");
@@ -87,6 +82,10 @@ const App = () => {
               Passionate about solving business problems through human-centered
               approach.
             </p>
+            <p>
+              HERE, I INVITE YOU TO VISIT MY WORK, READ MY ARTICLES AND GET IN
+              TOUCH...
+            </p>
           </div>
         </section>
 
@@ -96,37 +95,8 @@ const App = () => {
           <div className="mb-10">
             <h1 className="page-title">About</h1>
           </div>
-          <div className="mb-20 page-content">
-            <p className="mb-3">
-              I am a web developer based in the United States. I focus on
-              listening to you, the client, transforming your business needs
-              into seamlessly functioning applications to help you grow and
-              prosper.
-            </p>
-            <p className="mb-3">
-              I develop user interface for customer interaction as well as the
-              server code that works behind the curtain to make such interaction
-              possible.
-            </p>
-            <p>
-              I enjoy meeting new people and building long lasting, successful
-              relationships.
-            </p>
-            <p>Below are some of the tools I use in my work.</p>
-          </div>
-          <div className="icons-container">
-            <HtmlIcon className="skill-icon" />
-            <CssIcon className="skill-icon" />
-            <JsIcon className="skill-icon" />
-            <ReactIcon className="skill-icon" />
-            <ReduxIcon className="skill-icon" />
-            <NodeIcon className="skill-icon" />
-            <CsharpIcon className="skill-icon" />
-            <TailwindIcon className="skill-icon" />
-            <MuiIcon className="skill-icon" />
-            <MongoIcon className="skill-icon" />
-            <SqlIcon className="skill-icon" />
-            <GitIcon className="skill-icon" />
+          <div className="mb-10 page-content">
+            <About />
           </div>
         </section>
 
@@ -137,76 +107,111 @@ const App = () => {
           <div className="mb-10">
             <h1 className="page-title">Portfolio</h1>
           </div>
-          <div className="mb-20 page-content">
-            <p className="mb-3">
-              I invite you to check out some of my work I selected based on
-              their utility. A customizable e-commerce web application, a
-              website for the trucking company and a personal assistant for
-              tracking job applications.
-            </p>
-          </div>
-          <div className="portfolio-container">
-            <div className="portfolio-item">
-              <img
-                src={eCommerce}
-                alt="e-commerce web application"
-                className="rounded-t mb-2 object-cover"
-              />
-              <h3 className="text-xl font-semibold">E-commerce</h3>
-              <a
-                href="https://e-commerce-57fd6.web.app/"
-                target="_blank"
-                className="text-lg p-2"
-                rel="noreferrer"
-              >
-                Visit site
-              </a>
-            </div>
-            <div className="portfolio-item">
-              <img
-                src={maxCarriers}
-                alt="Trucking company website"
-                className="rounded-t mb-2 object-cover"
-              />
-              <h3 className="text-xl font-semibold">Max Carriers</h3>
-              <a
-                href="https://maxcarriers.us"
-                target="_blank"
-                className="text-lg p-2"
-                rel="noreferrer"
-              >
-                Visit site
-              </a>
-            </div>
-            <div className="portfolio-item">
-              <img
-                src={jobTracker}
-                alt="job application tracker"
-                className="rounded-t mb-2 object-cover"
-              />
-              <h3 className="text-xl font-semibold">Application Tracker</h3>
-              <a
-                href="https://job-application-tracker-741af.web.app/"
-                target="_blank"
-                className="text-lg p-2"
-                rel="noreferrer"
-              >
-                Visit site
-              </a>
-            </div>
+          <div className="mb-10 page-content">
+            <Portfolio />
           </div>
         </section>
         <section
           className={`${activePage === "articles" ? "opacity-100" : "hidden"}`}
-          style={{ border: "1px solid red" }}
         >
-          ARTICLES SECTION
+          <div className="mb-10">
+            <h1 className="page-title">Articles</h1>
+          </div>
+          <div className="mb-10 page-content">
+            <Articles />
+          </div>
         </section>
         <section
           className={`${activePage === "contact" ? "opacity-100" : "hidden"}`}
           style={{ border: "1px solid red" }}
         >
-          CONTACT SECTION
+          <div className="mb-10">
+            <h1 className="first-name">Let's</h1>
+            <h1 className="last-name">talk</h1>
+          </div>
+          <div className="mb-10 page-content">
+            <div className="contact-container">
+              <div
+                className="contact-container-info"
+                style={{ border: "1px solid red" }}
+              >
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold">CONTACT</h3>
+                </div>
+                <ul className="w-full">
+                  <li className="contact-entry">
+                    <div className="flex justify-between">
+                      <LocationIcon className="contact-icon" />
+                      <p className="text-md sm:text-lg">Location:</p>
+                    </div>
+
+                    <p className="text-md sm:text-lg">
+                      {" "}
+                      Chicago, United States
+                    </p>
+                  </li>
+
+                  <li className="contact-entry">
+                    <div className="flex justify-between">
+                      <EnvelopeIcon className="contact-icon" />
+                      <p className="text-md sm:text-lg">Email:</p>
+                    </div>
+                    <p className="text-md sm:text-lg">
+                      <a
+                        className="inline"
+                        aria-label="Send Alex Arobelidze an email"
+                        href="mailto:alex@lazikadigital.com"
+                      >
+                        alex@lazikadigital.com
+                      </a>
+                    </p>
+                  </li>
+
+                  <li className="contact-entry">
+                    <div className="flex justify-between">
+                      <PhoneIcon className="contact-icon" />
+                      <p className="text-md sm:text-lg">Phone:</p>
+                    </div>
+
+                    <p className="text-md sm:text-lg">
+                      <a
+                        className="inline"
+                        aria-label="Initiate a phone call to Alex Arobelidze"
+                        href="tel:+1-847-701-5197"
+                      >
+                        (847) 701-5197
+                      </a>
+                    </p>
+                  </li>
+
+                  <li className="contact-entry">
+                    <div className="flex justify-between">
+                      <LinkedInIcon className="contact-icon fill-current" />
+                      <p className="text-md sm:text-lg">LinkedIn:</p>
+                    </div>
+
+                    <p className="text-md sm:text-lg">
+                      <a
+                        aria-label="View Alex Arobelidze's LinkedIn profile"
+                        href="https://www.linkedin.com/in/alex-arobelidze-ua/"
+                        target="_blank"
+                        className="inline"
+                        rel="noreferrer"
+                      >
+                        View my profile
+                      </a>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div
+                style={{ border: "1px solid green" }}
+                className="w-full sm:w-3/5"
+              >
+                Contact form right
+              </div>
+            </div>
+          </div>
         </section>
         <ControlPanel
           className="control-panel-laptop"
