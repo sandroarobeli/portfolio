@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
 
 import ControlPanel from "./components/ControlPanel";
+import Home from "./components/Home";
 import About from "./components/About";
 import Articles from "./components/Articles";
 import Portfolio from "./components/Portfolio";
+import Contact from "./components/Contact";
 import ThemeIcon from "./icons/Theme";
-import LocationIcon from "./icons/Location";
-import EnvelopeIcon from "./icons/Envelope";
-import PhoneIcon from "./icons/Phone";
-import LinkedInIcon from "./icons/LinkedIn";
-// import LocationIcon2 from "./icons/Location21";
 
 // IMPORTANT NOTES: FAVICON, SEO, ACCESSIBILITY, LIGHTHOUSE etc...
 // ALSO: BRANCH OFF TO A HIDDEN COMPONENT AND EITHER LOG OR DISPLAY A VISITOR COUNTER!
@@ -17,12 +14,7 @@ import LinkedInIcon from "./icons/LinkedIn";
 // ONCE ALL PAGES ARE COMPLETE, TRY AND FIND WHERE TO PLACE MIN-H-SCREEN SO IT STAYS COMPACT!
 // ALSO LOOK INTO ASP.NET WEB APP TEMPLATES FOR GUIDANCE
 
-// TEMPLATE FOR FINAL VIEW: <section><CustomElement /></section>
-// DO THE LAZY LOADING AT THE VERY END AFTER EXTRACTING CUSTOM COMPONENTS
-
 // MAYBE USE MY PHOTO FOR FAVICON?
-
-// BETWEEN SUB-SECTIONS: MB-16, AFTER SECTION MB-10 (OR MAYBE 16) FOR NOW...
 
 const App = () => {
   const [activePage, setActivePage] = useState("home");
@@ -54,7 +46,7 @@ const App = () => {
       localStorage.theme = "light";
     }
   };
-  // min-h-screen
+
   return (
     <div className="flex flex-col justify-between">
       <header>
@@ -75,20 +67,9 @@ const App = () => {
             <h1 className="last-name">Arobelidze</h1>
           </div>
           <div className="page-content">
-            <p className="mb-3">
-              Dedicated to developing well functioning web applications.
-            </p>
-            <p>
-              Passionate about solving business problems through human-centered
-              approach.
-            </p>
-            <p>
-              HERE, I INVITE YOU TO VISIT MY WORK, READ MY ARTICLES AND GET IN
-              TOUCH...
-            </p>
+            <Home />
           </div>
         </section>
-
         <section
           className={`${activePage === "about" ? "opacity-100" : "hidden"}`}
         >
@@ -99,9 +80,7 @@ const App = () => {
             <About />
           </div>
         </section>
-
         <section
-          // style={{ border: "1px solid red" }}
           className={`${activePage === "portfolio" ? "opacity-100" : "hidden"}`}
         >
           <div className="mb-10">
@@ -123,94 +102,13 @@ const App = () => {
         </section>
         <section
           className={`${activePage === "contact" ? "opacity-100" : "hidden"}`}
-          style={{ border: "1px solid red" }}
         >
           <div className="mb-10">
             <h1 className="first-name">Let's</h1>
             <h1 className="last-name">talk</h1>
           </div>
           <div className="mb-10 page-content">
-            <div className="contact-container">
-              <div
-                className="contact-container-info"
-                style={{ border: "1px solid red" }}
-              >
-                <div className="mb-8">
-                  <h3 className="text-xl font-semibold">CONTACT</h3>
-                </div>
-                <ul className="w-full">
-                  <li className="contact-entry">
-                    <div className="flex justify-between">
-                      <LocationIcon className="contact-icon" />
-                      <p className="text-md sm:text-lg">Location:</p>
-                    </div>
-
-                    <p className="text-md sm:text-lg">
-                      {" "}
-                      Chicago, United States
-                    </p>
-                  </li>
-
-                  <li className="contact-entry">
-                    <div className="flex justify-between">
-                      <EnvelopeIcon className="contact-icon" />
-                      <p className="text-md sm:text-lg">Email:</p>
-                    </div>
-                    <p className="text-md sm:text-lg">
-                      <a
-                        className="inline"
-                        aria-label="Send Alex Arobelidze an email"
-                        href="mailto:alex@lazikadigital.com"
-                      >
-                        alex@lazikadigital.com
-                      </a>
-                    </p>
-                  </li>
-
-                  <li className="contact-entry">
-                    <div className="flex justify-between">
-                      <PhoneIcon className="contact-icon" />
-                      <p className="text-md sm:text-lg">Phone:</p>
-                    </div>
-
-                    <p className="text-md sm:text-lg">
-                      <a
-                        className="inline"
-                        aria-label="Initiate a phone call to Alex Arobelidze"
-                        href="tel:+1-847-701-5197"
-                      >
-                        (847) 701-5197
-                      </a>
-                    </p>
-                  </li>
-
-                  <li className="contact-entry">
-                    <div className="flex justify-between">
-                      <LinkedInIcon className="contact-icon fill-current" />
-                      <p className="text-md sm:text-lg">LinkedIn:</p>
-                    </div>
-
-                    <p className="text-md sm:text-lg">
-                      <a
-                        aria-label="View Alex Arobelidze's LinkedIn profile"
-                        href="https://www.linkedin.com/in/alex-arobelidze-ua/"
-                        target="_blank"
-                        className="inline"
-                        rel="noreferrer"
-                      >
-                        View my profile
-                      </a>
-                    </p>
-                  </li>
-                </ul>
-              </div>
-              <div
-                style={{ border: "1px solid green" }}
-                className="w-full sm:w-3/5"
-              >
-                Contact form right
-              </div>
-            </div>
+            <Contact />
           </div>
         </section>
         <ControlPanel
