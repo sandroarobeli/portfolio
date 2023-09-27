@@ -1,20 +1,12 @@
 import { useState, useEffect } from "react";
 
-import ControlPanel from "./components/ControlPanel";
 import Home from "./components/Home";
 import About from "./components/About";
 import Articles from "./components/Articles";
 import Portfolio from "./components/Portfolio";
 import Contact from "./components/Contact";
+import ControlPanel from "./components/ControlPanel";
 import ThemeIcon from "./icons/Theme";
-
-// IMPORTANT NOTES: FAVICON, SEO, ACCESSIBILITY, LIGHTHOUSE etc...
-// ALSO: BRANCH OFF TO A HIDDEN COMPONENT AND EITHER LOG OR DISPLAY A VISITOR COUNTER!
-
-// ONCE ALL PAGES ARE COMPLETE, TRY AND FIND WHERE TO PLACE MIN-H-SCREEN SO IT STAYS COMPACT!
-// ALSO LOOK INTO ASP.NET WEB APP TEMPLATES FOR GUIDANCE
-
-// MAYBE USE MY PHOTO FOR FAVICON?
 
 const App = () => {
   const [activePage, setActivePage] = useState("home");
