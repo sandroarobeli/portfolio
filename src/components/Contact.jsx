@@ -134,7 +134,9 @@ const Contact = () => {
               })}
             />
             {errors.name && (
-              <div className="text-red-500 text-lg">{errors.name.message}</div>
+              <div className="text-red-500 text-lg pl-2">
+                {errors.name.message}
+              </div>
             )}
           </div>
           <div className="mb-6">
@@ -154,7 +156,9 @@ const Contact = () => {
               })}
             />
             {errors.email && (
-              <div className="text-red-500 text-lg">{errors.email.message}</div>
+              <div className="text-red-500 text-lg pl-2">
+                {errors.email.message}
+              </div>
             )}
           </div>
           <div className="mb-6">
@@ -171,7 +175,7 @@ const Contact = () => {
               })}
             />
             {errors.content && (
-              <div className="text-red-500 text-lg">
+              <div className="text-red-500 text-lg pl-2">
                 {errors.content.message}
               </div>
             )}

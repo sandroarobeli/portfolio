@@ -20,7 +20,7 @@ const Portfolio = () => {
             alt="e-commerce web application"
             className="rounded-t mb-2 object-cover"
           />
-          <h3 className="text-xl font-semibold">E-commerce</h3>
+          <h3 className="text-xl text-black font-semibold">E-commerce</h3>
           <a
             href="https://e-commerce-57fd6.web.app/"
             target="_blank"
@@ -36,7 +36,7 @@ const Portfolio = () => {
             alt="Trucking company website"
             className="rounded-t mb-2 object-cover"
           />
-          <h3 className="text-xl font-semibold">Max Carriers</h3>
+          <h3 className="text-xl text-black font-semibold">Max Carriers</h3>
           <a
             href="https://maxcarriers.us"
             target="_blank"
@@ -52,7 +52,9 @@ const Portfolio = () => {
             alt="job application tracker"
             className="rounded-t mb-2 object-cover"
           />
-          <h3 className="text-xl font-semibold">Application Tracker</h3>
+          <h3 className="text-xl text-black font-semibold">
+            Application Tracker
+          </h3>
           <a
             href="https://job-application-tracker-741af.web.app/"
             target="_blank"

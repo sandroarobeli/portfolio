@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import ControlPanel from "./components/ControlPanel";
 import ThemeIcon from "./icons/Theme";
 
+// REMEMBER: NEW BUILD, FIREBASE DEPLOY, TEST!
 const App = () => {
   const [activePage, setActivePage] = useState("home");
 
